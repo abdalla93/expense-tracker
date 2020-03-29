@@ -6,6 +6,10 @@ const morgan = require("morgan");
 const mongoose = require("mongoose");
 dotenv.config({ path: "./config/config.env" });
 
+const transactions = require("./app/routes/transactions");
+
+const app = express();
+
 mongoose
   .connect(
     process.env.MONGO_URI ||
@@ -15,11 +19,7 @@ mongoose
       useUnifiedTopology: true
     }
   )
-  .catch(error => console.log(`failed to connect !!! ${error}`));
-
-const transactions = require("./app/routes/transactions");
-
-const app = express();
+  .catch(error => console.log(`failed to connect !!!!! ${error}`));
 app.use(express.json());
 
 app.use("/api/v1/transactions", transactions);
