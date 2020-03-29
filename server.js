@@ -15,7 +15,7 @@ mongoose
       useUnifiedTopology: true
     }
   )
-  .catch(error => console.log(error));
+  .catch(error => console.log(`failed to connect !!! ${error}`));
 
 const transactions = require("./app/routes/transactions");
 
