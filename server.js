@@ -3,10 +3,19 @@ const express = require("express");
 const dotenv = require("dotenv");
 const colors = require("colors");
 const morgan = require("morgan");
-const connectDb = require("./config/db");
+const mongoose = require("mongoose");
 dotenv.config({ path: "./config/config.env" });
 
-connectDb();
+mongoose
+  .connect(
+    process.env.MONGO_URI ||
+      "mongodb+srv://admin-abdallah:test123@cluster0-57pd9.mongodb.net/expensetracker?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    }
+  )
+  .catch(error => console.log(error));
 
 const transactions = require("./app/routes/transactions");
 
