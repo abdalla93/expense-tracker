@@ -8,16 +8,13 @@ const connectDB = async () => {
         "mongodb+srv://admin-abdallah:test123@cluster0-57pd9.mongodb.net/expensetracker?retryWrites=true&w=majority",
       {
         useNewUrlParser: true,
-        useCreateIndex: true,
         useUnifiedTopology: true
       }
     );
 
-    console.log(
-      `MongoDB Connected: ${conn.connection.host}`.cyan.underline.bold
-    );
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (err) {
-    console.log(`Error:${err.massage}.red`);
+    console.log(`Error:${err.massage}`);
     process.exit(1);
   }
 };
